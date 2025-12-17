@@ -15,8 +15,13 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
     $_SESSION['email']= $user['email'];
     $_SESSION['name']=$user['name'];
     $_SESSION['id']=$user['id'];
-    header("location:home.php");
+  if($user['type']=='admin'){
+      header("location:display.php");
     exit();
+  }else{
+     header("location:home.php");
+    exit();
+  }
     }else{
     echo 'User not found';
 }
